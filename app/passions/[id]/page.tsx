@@ -5,11 +5,8 @@ import Link from "next/link"
 import { ArrowLeft, CalendarIcon, Clock } from "lucide-react"
 import { useEffect } from "react"
 
-interface BlogPostPageProps {
-  id: string
-}
 
-export default function BlogPostPage({ params }: { params: BlogPostPageProps }) {
+export default function BlogPostPage({ params }: { params: { id: string } }) {
   const { id } = params
 
   // This would typically come from an API or database
