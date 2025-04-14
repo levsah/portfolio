@@ -1,10 +1,7 @@
-"use client"
-
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, CalendarIcon, Clock } from "lucide-react"
-import { useEffect } from "react"
-
+import styles from "./blog-post.module.css"
 
 export default function BlogPostPage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -262,50 +259,6 @@ function MyComponent() {
     notFound()
   }
 
-  // Add custom styles to ensure proper formatting in production
-  useEffect(() => {
-    // Add specific styling for the blog content
-    const style = document.createElement("style")
-    style.innerHTML = `
-      .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
-        color: hsl(210, 100%, 50%); /* Blue color */
-        font-weight: bold;
-        margin-top: 1.5em;
-        margin-bottom: 0.75em;
-      }
-      .blog-content h2 {
-        font-size: 1.5rem;
-        line-height: 2rem;
-      }
-      .blog-content p {
-        margin-bottom: 1em;
-        line-height: 1.75;
-      }
-      .blog-content ul, .blog-content ol {
-        margin-left: 1.5em;
-        margin-bottom: 1em;
-      }
-      .blog-content li {
-        margin-bottom: 0.5em;
-      }
-      .blog-content pre {
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 1em;
-        border-radius: 0.25rem;
-        overflow-x: auto;
-        margin-bottom: 1em;
-      }
-      .blog-content code {
-        font-family: monospace;
-      }
-    `
-    document.head.appendChild(style)
-
-    return () => {
-      document.head.removeChild(style)
-    }
-  }, [])
-
   return (
     <div className="space-y-8 max-w-3xl mx-auto">
       <Link href="/passions" className="inline-flex items-center gap-2 text-primary hover:underline">
@@ -331,7 +284,7 @@ function MyComponent() {
         </div>
 
         <div
-          className="prose prose-invert max-w-none prose-headings:text-primary prose-a:text-primary blog-content"
+          className={`prose prose-invert max-w-none prose-headings:text-primary prose-a:text-primary ${styles["blog-content"]}`}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
