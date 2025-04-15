@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation"
 import BlogPost from "./BlogPost"
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: Promise<{ id: string }>
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
   // This would typically come from an API or database
   const posts = {
     "future-of-ai": {
@@ -249,9 +253,8 @@ function MyComponent() {
     },
   }
 
-  // Ensure we have a valid id before proceeding
-  const postId = await Promise.resolve(params.id)
-  const post = posts[postId as keyof typeof posts]
+  const resolvedParams = await params
+  const post = posts[resolvedParams.id as keyof typeof posts]
 
   if (!post) {
     notFound()
