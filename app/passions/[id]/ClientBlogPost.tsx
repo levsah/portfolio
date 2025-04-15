@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { ArrowLeft, CalendarIcon, Clock } from "lucide-react"
-import styles from "./blog-content.module.css"
+import styles from "./blog-post.module.css"
 
-interface BlogContentProps {
+interface ClientBlogPostProps {
   post: {
     title: string
     date: string
@@ -13,7 +13,7 @@ interface BlogContentProps {
   }
 }
 
-export default function BlogContent({ post }: BlogContentProps) {
+export default function ClientBlogPost({ post }: ClientBlogPostProps) {
   return (
     <div className="space-y-8 max-w-3xl mx-auto">
       <Link href="/passions" className="inline-flex items-center gap-2 text-primary hover:underline">

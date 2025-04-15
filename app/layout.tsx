@@ -23,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${jetbrainsMono.variable} font-mono bg-black text-white min-h-screen flex flex-col`}>
+      <body 
+        className={`${jetbrainsMono.variable} font-mono bg-black text-white min-h-screen flex flex-col`}
+        style={{ overscrollBehaviorX: "auto" }}
+      >
         <div className="fixed inset-0 bg-grid-pattern opacity-10 pointer-events-none z-0"></div>
         <Navigation />
         <main className="flex-1 container mx-auto px-4 py-8 relative z-10">{children}</main>
